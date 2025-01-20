@@ -1,0 +1,5 @@
+C:/LAB/ELT73A_Projeto_final/ELT73A-Proj_Final/IOT/CMakeFiles/IOT.dir
+C:/LAB/ELT73A_Projeto_final/ELT73A-Proj_Final/IOT/CMakeFiles/edit_cache.dir
+C:/LAB/ELT73A_Projeto_final/ELT73A-Proj_Final/IOT/CMakeFiles/rebuild_cache.dir
+C:/LAB/ELT73A_Projeto_final/ELT73A-Proj_Final/IOT/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+C:/LAB/ELT73A_Projeto_final/ELT73A-Proj_Final/IOT/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
