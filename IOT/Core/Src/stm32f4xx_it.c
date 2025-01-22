@@ -222,14 +222,15 @@ void EXTI0_IRQHandler(void)
 void ADC_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC_IRQn 0 */
-  //uint16_t LDRSENSOR;
-  //float voltage;
+  //uint16_t adc1in1;
+  float voltage;
   /* USER CODE END ADC_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
   /* USER CODE BEGIN ADC_IRQn 1 */
   LDRSENSOR = HAL_ADC_GetValue(&hadc1);
-  //voltage = (adc1in1*3.3)/4095;
-  TIM2->CCR1 = LDRSENSOR;
+  voltage = (LDRSENSOR*3.3)/4095;
+  
+  //TIM2->CCR1 = adc1in1;;
   /* USER CODE END ADC_IRQn 1 */
 }
 
@@ -239,11 +240,11 @@ void ADC_IRQHandler(void)
 void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
-  
+  HAL_ADC_Start_IT(&hadc1);
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
-  HAL_ADC_Start_IT(&hadc1);
+  
   /* USER CODE END TIM2_IRQn 1 */
 }
 
