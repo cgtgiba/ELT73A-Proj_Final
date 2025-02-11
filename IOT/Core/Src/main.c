@@ -87,6 +87,13 @@ const osThreadAttr_t ReleCH2Task_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for ReleCH3Task */
+osThreadId_t ReleCH3TaskHandle;
+const osThreadAttr_t ReleCH3Task_attributes = {
+  .name = "ReleCH3Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 /* Definitions for SensorAMutex */
 osMutexId_t SensorAMutexHandle;
 const osMutexAttr_t SensorAMutex_attributes = {
@@ -125,6 +132,7 @@ void StartLEDTask(void *argument);
 void StartReleCH1Task(void *argument);
 void StartTEMPTask(void *argument);
 void StartReleCH2Task(void *argument);
+void StartReleCH3Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -216,6 +224,9 @@ int main(void)
   /* creation of ReleCH2Task */
   ReleCH2TaskHandle = osThreadNew(StartReleCH2Task, NULL, &ReleCH2Task_attributes);
 
+  /* creation of ReleCH3Task */
+  ReleCH3TaskHandle = osThreadNew(StartReleCH3Task, NULL, &ReleCH3Task_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 
@@ -236,12 +247,7 @@ int main(void)
   {
     //LDRSENSOR = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
     /* USER CODE END WHILE */
-    /*
-    if (BLUELED)
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); // LED ON
-    else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); // LED OF
-      */
+
     /* USER CODE BEGIN 3 */
 
   }
@@ -463,10 +469,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, Blue_Led_Pin|Rele_CH2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, Blue_Led_Pin|Rele_CH2_Pin|Rele_CH3_Vent_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : Blue_Led_Pin Rele_CH2_Pin */
-  GPIO_InitStruct.Pin = Blue_Led_Pin|Rele_CH2_Pin;
+  /*Configure GPIO pins : Blue_Led_Pin Rele_CH2_Pin Rele_CH3_Vent_Pin */
+  GPIO_InitStruct.Pin = Blue_Led_Pin|Rele_CH2_Pin|Rele_CH3_Vent_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -527,7 +533,7 @@ void StartLEDTask(void *argument)
     else
       HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); // LED OFF
     
-    osDelay(50);
+    osDelay(1);
   }
   /* USER CODE END StartLEDTask */
 }
@@ -547,14 +553,14 @@ void StartReleCH1Task(void *argument)
   {
     float voltage;
     LDRSENSOR = HAL_ADC_GetValue(&hadc1);
-    /* voltage = (LDRSENSOR*3.3)/4095;
-
+    voltage = (LDRSENSOR*3.3)/4095;
+    /*
     voltage1 = (ADC1IN7 * 3.3) / 4095;
     DiffA = ADC1IN1 - ADC1IN7;
     sensorA = (sensorA + ADC1IN7)/2; */
     //if (LED_Test = false)
     //{
-      if (LDRSENSOR> 3000)
+      if (LDRSENSOR > 3000)
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH1 ON
       else
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH1 OFF
@@ -579,18 +585,8 @@ void StartTEMPTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    voltage2 = (ADC1IN1 * 3.3) / 4095;
-    DiffA = ADC1IN1 - ADC1IN7;
-    sensorA = (sensorA + ADC1IN1)/2;
-
-    //temperature = temp_sensor.read_temp_celsius();
-
-    if (temperature> 60)
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH2 ON
-    else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH2 OFF
-
-    osDelay(800);
+    
+    osDelay(1);
   }
   /* USER CODE END StartTEMPTask */
 }
@@ -604,13 +600,43 @@ void StartTEMPTask(void *argument)
 /* USER CODE END Header_StartReleCH2Task */
 void StartReleCH2Task(void *argument)
 {
-  /* USER CODE BEGIN StartReleCH2Task */
+  /* USER CODE BEGIN StartReleCH2Task 
+     A
+  */
   /* Infinite loop */
   for(;;)
   {
+    voltage2 = (ADC1IN1 * 3.3) / 4095;
+    DiffA = ADC1IN1 - ADC1IN7;
+    sensorA = (sensorA + ADC1IN1)/2;
+
     osDelay(1);
   }
   /* USER CODE END StartReleCH2Task */
+}
+
+/* USER CODE BEGIN Header_StartReleCH3Task */
+/**
+* @brief Function implementing the ReleCH3Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartReleCH3Task */
+void StartReleCH3Task(void *argument)
+{
+  /* USER CODE BEGIN StartReleCH3Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    temperature = BLUELED;
+    //temperature = temp_sensor.read_temp_celsius();
+    if (temperature)
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET); // Rele CH2 ON
+    else
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_SET); // Rele CH2 OFF
+    osDelay(1);
+  }
+  /* USER CODE END StartReleCH3Task */
 }
 
 /**

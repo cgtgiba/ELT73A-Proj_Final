@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define Blue_Led_GPIO_Port GPIOC
 #define Rele_CH2_Pin GPIO_PIN_14
 #define Rele_CH2_GPIO_Port GPIOC
+#define Rele_CH3_Vent_Pin GPIO_PIN_15
+#define Rele_CH3_Vent_GPIO_Port GPIOC
 #define User_KEY_EXTI0_Pin GPIO_PIN_0
 #define User_KEY_EXTI0_GPIO_Port GPIOA
 #define User_KEY_EXTI0_EXTI_IRQn EXTI0_IRQn
