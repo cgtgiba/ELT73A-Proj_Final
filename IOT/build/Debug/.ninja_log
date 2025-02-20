@@ -1,7 +1,7 @@
 # ninja log v5
 10795	27640	7593619048128218	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	bbb54039a5006c68
-10	444	7604199321398076	CMakeFiles/IOT.dir/Core/Src/main.c.obj	d071c6c0fff954ec
-60	1366	7604161684201171	CMakeFiles/IOT.dir/Core/Src/stm32f4xx_it.c.obj	7018559217e21e65
+127	2722	7617566534721192	CMakeFiles/IOT.dir/Core/Src/main.c.obj	d071c6c0fff954ec
+760	3905	7617560798797646	CMakeFiles/IOT.dir/Core/Src/stm32f4xx_it.c.obj	7018559217e21e65
 511	4446	7593618822987054	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c.obj	3720dbd1862aed44
 18372	42159	7593619195262920	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj	27244aa328ace8f1
 662	12829	7593618885550058	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	4dad2e7d90855038
@@ -9,7 +9,7 @@
 582	12191	7593618880414527	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	914ebb8e5a5186f
 544	13426	7593618886104686	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	b6d6a5d43768ed15
 810	13659	7593618894637905	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	d23301fd108ba643
-69	1363	7604161684191166	CMakeFiles/IOT.dir/Core/Src/stm32f4xx_hal_msp.c.obj	2f93bde82e609d2f
+653	7515	7616857896687756	CMakeFiles/IOT.dir/Core/Src/stm32f4xx_hal_msp.c.obj	2f93bde82e609d2f
 17337	43479	7593619206615577	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj	764331d774c7b294
 884	14779	7593618910153285	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	da11eb0eac0b9375
 13660	38449	7593619151734892	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj	3f84d9d1dc13a41
@@ -25,12 +25,12 @@
 11265	29519	7593619051304075	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	c914cc018a9f6370
 35208	51323	7593619292047162	CMakeFiles/IOT.dir/Core/Src/syscalls.c.obj	b83cf2195cc2499c
 12519	32870	7593619095850533	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	48ec5a4c165fec57
-46	1817	7609854234398107	build.ninja	b993e4ee2e3c4a17
+150	6098	7617579506725811	build.ninja	b993e4ee2e3c4a17
 14189	37755	7593619148762001	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj	3fd6a04aa5c3e573
 12251	30442	7593619060338251	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	fd60feb92fb3d312
 26289	48364	7593619262309726	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj	345982f6e0e8731c
-445	787	7604199324584994	IOT.elf	f4de540623d33430
-49	1354	7604161684081164	CMakeFiles/IOT.dir/Core/Src/freertos.c.obj	a10f05efd0794f64
+2729	4713	7617566554658686	IOT.elf	f4de540623d33430
+389	7607	7616857896116031	CMakeFiles/IOT.dir/Core/Src/freertos.c.obj	a10f05efd0794f64
 18931	46328	7593619240371714	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj	5e0c09bbf24ecd34
 15175	26184	7593619031886487	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj	881d704cf2593fa3
 12846	33333	7593619102110288	CMakeFiles/IOT.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c.obj	3403692f7777b503
@@ -39,3 +39,11 @@
 29698	48678	7593619265007276	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj	7391476de7bc6058
 28033	49430	7593619273245313	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj	b030ea4b12bcef2a
 30640	51210	7593619290546292	CMakeFiles/IOT.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj	972c8048915053d6
+105	4307	7617579506725811	build.ninja	b993e4ee2e3c4a17
+249	2414	7617579536155063	CMakeFiles/IOT.dir/Core/Src/stm32f4xx_it.c.obj	7018559217e21e65
+227	2750	7617579539307296	CMakeFiles/IOT.dir/Core/Src/main.c.obj	d071c6c0fff954ec
+2751	4617	7617579557460103	IOT.elf	f4de540623d33430
+136	2139	7617585475328348	CMakeFiles/IOT.dir/Core/Src/stm32f4xx_it.c.obj	7018559217e21e65
+2146	4015	7617585493267628	IOT.elf	f4de540623d33430
+84	1188	7617589541901604	CMakeFiles/IOT.dir/Core/Src/main.c.obj	d071c6c0fff954ec
+1192	2452	7617589553802181	IOT.elf	f4de540623d33430
