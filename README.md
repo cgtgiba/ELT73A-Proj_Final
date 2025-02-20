@@ -40,7 +40,24 @@ jumpers
 ***********************************************************************************************
 * FUNCIONAMENTO
 ***********************************************************************************************
-O sistema está configurado com FreeRTOS e tasks diferentes para cada pino de sáida
-Inicialmente o pino PA0 foi configurado com interrupsão,enviando sinal para o PC13 que ira energizar o Blue Led da placa juntamente com canal 1 do módulo de relé
-PA6 e PA7 recebem o sinal analógico dos LDRs, fazem a conversão no ADC, e através de uma lógica, habilitam as saídas PC14 (canal 2 do relé) e PB1 (canal 4 do relé)
-O pino PA1 recebe o o sinal da sonda DS18B20, e atravéz de lógica habilita a saída PC15 (canal 3 do relé)
+O sistema está configurado com FreeRTOS e tasks diferentes para cada pino de sáida.
+Inicialmente o pino PA0 foi configurado com interrupsão e então alterado para uma *TASK* do FreeRTOS. Precionando o botão, tanto da placa de desenvolvimento quanto o do *protoboard*, alteras-se o estafo da *flag* BLUELED, alterando o estado do pino PC13 de *High* para  *Low*, o que fará com que acenda ou apague o LED azul da placa, e consequentemente ligue ou desligue o canal 1 do módulo de relé.
+
+PA1 configurado como entrada analógica recebe o sinal da sonda DS18B20 pelo ADC, e atravéz de lógica habilita a saída PC15 (canal 3 do relé).
+
+PA6 e PA7 foram configurados como entrada analógica e devem receber o sinal vindo de um sensor LDR para o PA6 e se um módulo LDR para o PA7. Ambos com ADC no IN6 e IN7, e através de lógica, habilitam as saídas PCB1 (canal 4 do relé) e PC14 (canal 2 do relé).
+
+*************************************************************************************************
+* INTERTRAVAMENTO
+*************************************************************************************************
+PA0 (Key)      --> PC13 (Relé CH1)
+
+PA1 (DS18B20)  --> PC15 (Relé CH3)
+
+PA2  (Key2)    -->
+
+PA5 (DHT11)    -->
+
+PA6 (LDR2)     --> PB1 (Relé CH4)
+
+PA7 (LDR1)     --> PC14 (Relé CH2)
