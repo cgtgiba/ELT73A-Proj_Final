@@ -68,17 +68,8 @@ void Error_Handler(void);
 #define User_KEY_EXTI0_EXTI_IRQn EXTI0_IRQn
 #define DS18B20_Pin_Pin GPIO_PIN_1
 #define DS18B20_Pin_GPIO_Port GPIOA
-#define Key_LED_Pin GPIO_PIN_2
-#define Key_LED_GPIO_Port GPIOA
-#define Key_LED_EXTI_IRQn EXTI2_IRQn
-#define DHT11_Sensor_Pin GPIO_PIN_5
-#define DHT11_Sensor_GPIO_Port GPIOA
-#define LDR_Sensor_2_Pin GPIO_PIN_6
-#define LDR_Sensor_2_GPIO_Port GPIOA
 #define LDR_Sensor_Pin GPIO_PIN_7
 #define LDR_Sensor_GPIO_Port GPIOA
-#define Rele_CH4_Pin GPIO_PIN_1
-#define Rele_CH4_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

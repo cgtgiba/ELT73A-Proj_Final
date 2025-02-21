@@ -94,13 +94,6 @@ const osThreadAttr_t ReleCH3Task_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for ReleCH4Task */
-osThreadId_t ReleCH4TaskHandle;
-const osThreadAttr_t ReleCH4Task_attributes = {
-  .name = "ReleCH4Task",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
 /* Definitions for SensorAMutex */
 osMutexId_t SensorAMutexHandle;
 const osMutexAttr_t SensorAMutex_attributes = {
@@ -115,18 +108,15 @@ const osMutexAttr_t SensorBMutex_attributes = {
 bool BLUELED = 0;
 bool LED_Test;
 int LDRSENSOR = 0;
-int LDRSENSOR2 = 0;
 float DS18B20_Sensor = 0.0f;
 float temperature;
-float humidity;
-//uint32_t adc_value = 0; // Variável para armazenar o valor do ADC
-uint32_t AD_RES_BUFFER[5];
-uint16_t ADC1IN1, ADC1IN5;
-uint16_t ADC1IN6, ADC1IN7;
-uint16_t ADC1TempChannel;
+uint32_t adc_value = 0; // Variável para armazenar o valor do ADC
+uint32_t AD_RES_BUFFER[4];
+uint16_t ADC1IN1, ADC1IN7;
+uint16_t ADC1IN3, ADC1IN4;
 int16_t DiffA, DiffB;
-float voltage1, voltage5;
-float voltage6, voltage7;
+float voltage1, voltage2;
+float voltage3, voltage4;
 uint32_t sensorA,sensorB;
 /* USER CODE END PV */
 
@@ -143,7 +133,6 @@ void StartReleCH1Task(void *argument);
 void StartTEMPTask(void *argument);
 void StartReleCH2Task(void *argument);
 void StartReleCH3Task(void *argument);
-void StartTeleCH4Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -237,9 +226,6 @@ int main(void)
 
   /* creation of ReleCH3Task */
   ReleCH3TaskHandle = osThreadNew(StartReleCH3Task, NULL, &ReleCH3Task_attributes);
-
-  /* creation of ReleCH4Task */
-  ReleCH4TaskHandle = osThreadNew(StartTeleCH4Task, NULL, &ReleCH4Task_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -338,7 +324,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 5;
+  hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -348,7 +334,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Channel = ADC_CHANNEL_7;
   sConfig.Rank = 1;
   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
@@ -358,35 +344,8 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_5;
+  sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = 2;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
-  sConfig.Channel = ADC_CHANNEL_6;
-  sConfig.Rank = 3;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
-  sConfig.Channel = ADC_CHANNEL_7;
-  sConfig.Rank = 4;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
-  sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;
-  sConfig.Rank = 5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -512,9 +471,6 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, Blue_Led_Pin|Rele_CH2_Pin|Rele_CH3_Vent_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(Rele_CH4_GPIO_Port, Rele_CH4_Pin, GPIO_PIN_SET);
-
   /*Configure GPIO pins : Blue_Led_Pin Rele_CH2_Pin Rele_CH3_Vent_Pin */
   GPIO_InitStruct.Pin = Blue_Led_Pin|Rele_CH2_Pin|Rele_CH3_Vent_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
@@ -528,45 +484,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(User_KEY_EXTI0_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : Key_LED_Pin */
-  GPIO_InitStruct.Pin = Key_LED_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(Key_LED_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Rele_CH4_Pin */
-  GPIO_InitStruct.Pin = Rele_CH4_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(Rele_CH4_GPIO_Port, &GPIO_InitStruct);
-
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
-
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
-/*uint32_t Read_ADC_Channel(uint32_t channel) {
-  ADC_ChannelConfTypeDef sConfig = {0};
-  sConfig.Channel = channel;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
-  HAL_ADC_ConfigChannel(&hadc1, &sConfig);
-  
-  HAL_ADC_Start(&hadc1);
-  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-  uint32_t value = HAL_ADC_GetValue(&hadc1);
-  HAL_ADC_Stop(&hadc1);
-  
-  return value;
-}*/
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -600,6 +527,12 @@ void StartLEDTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+    
+    if (BLUELED)
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); // LED ON
+    else
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); // LED OFF
+    
     osDelay(1);
   }
   /* USER CODE END StartLEDTask */
@@ -618,11 +551,21 @@ void StartReleCH1Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    if (BLUELED)
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); // LED ON & Rele CH1 ON
-    else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); // LED OFF & Rele CH1 OFF
-
+    float voltage;
+    LDRSENSOR = HAL_ADC_GetValue(&hadc1);
+    voltage = (LDRSENSOR*3.3)/4095;
+    /*
+    voltage1 = (ADC1IN7 * 3.3) / 4095;
+    DiffA = ADC1IN1 - ADC1IN7;
+    sensorA = (sensorA + ADC1IN7)/2; */
+    //if (LED_Test = false)
+    //{
+      if (LDRSENSOR > 3000)
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH1 ON
+      else
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH1 OFF
+    //}
+    
     osDelay(1);
   }
   /* USER CODE END StartReleCH1Task */
@@ -657,31 +600,16 @@ void StartTEMPTask(void *argument)
 /* USER CODE END Header_StartReleCH2Task */
 void StartReleCH2Task(void *argument)
 {
-  /* USER CODE BEGIN StartReleCH2Task */
+  /* USER CODE BEGIN StartReleCH2Task 
+     A
+  */
   /* Infinite loop */
   for(;;)
   {
-    //LDRSENSOR = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
-    LDRSENSOR = HAL_ADC_GetValue(&hadc1);
-    ADC1IN7 = AD_RES_BUFFER[3];
-    //voltage7 = (ADC1IN7 * 3.3) /4095;
-    //LDRSENSOR = ADC1IN7; // Recebe o valor domódulo de LDR na PA7
-    voltage7 = (LDRSENSOR*3.3)/4095;
-    /*
-    voltage1 = (ADC1IN7 * 3.3) / 4095;
+    voltage2 = (ADC1IN1 * 3.3) / 4095;
     DiffA = ADC1IN1 - ADC1IN7;
-    sensorA = (sensorA + ADC1IN7)/2; */
-    
-      // Verifica o Valor do LDR e se for maior que 3000, altera o estado do pino PC14 para 0, energizando o canal 2 do módulo de reles
-      if (LDRSENSOR > 3000)
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH2 ON
-      // Caso contrário, se o valor do LDR for menor que 3000, altera o estado do pino PC14 para 1, desligando o canal 2 do módulo de reles
-      //else if (LDRSENSOR < 2000)
-        //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH2 OF
-      //else (LDRSENSOR < 2000);
-      else
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH2 OF
-    
+    sensorA = (sensorA + ADC1IN1)/2;
+
     osDelay(1);
   }
   /* USER CODE END StartReleCH2Task */
@@ -700,41 +628,15 @@ void StartReleCH3Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    temperature = 10; //BLUELED
+    temperature = BLUELED;
     //temperature = temp_sensor.read_temp_celsius();
-    if (temperature > 25)
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET); // Rele CH3 ON
+    if (temperature)
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET); // Rele CH2 ON
     else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_SET); // Rele CH3 OFF
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_SET); // Rele CH2 OFF
     osDelay(1);
   }
   /* USER CODE END StartReleCH3Task */
-}
-
-/* USER CODE BEGIN Header_StartTeleCH4Task */
-/**
-* @brief Function implementing the ReleCH4Task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTeleCH4Task */
-void StartTeleCH4Task(void *argument)
-{
-  /* USER CODE BEGIN StartTeleCH4Task */
-  /* Infinite loop */
-  for(;;)
-  {
-    LDRSENSOR2 = ADC1IN6;
-    // Verifica o Valor do LDR e se for maior que 2000, altera o estado do pino PB1 para 0, energizando o canal 4 do módulo de reles
-    if (LDRSENSOR2 > 3000)
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET); // Rele CH4 ON
-    // Caso contrário, se o valor do LDR for menor que 2000, altera o estado do pino PB1 para 1, desligando o canal 4 do módulo de reles
-    else
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET); // Rele CH4 OFF
-
-      osDelay(1);
-  }
-  /* USER CODE END StartTeleCH4Task */
 }
 
 /**

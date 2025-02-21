@@ -47,14 +47,10 @@
 extern bool BLUELED;
 extern bool LED_Test;
 extern int LDRSENSOR;
-extern int LDRSENSOR2;
 extern float DS18B20_Sensor;
-extern uint32_t AD_RES_BUFFER[5];
-extern uint16_t ADC1IN1,ADC1IN5;
-extern uint16_t ADC1IN6,ADC1IN7;
-extern uint16_t ADC1TempChannel;
-extern float voltage1, voltage5;
-extern float voltage6, voltage7;
+extern uint32_t AD_RES_BUFFER[4];
+extern uint16_t ADC1IN1,ADC1IN7;
+extern uint16_t ADC1IN3,ADC1IN4;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -211,20 +207,6 @@ void EXTI0_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles EXTI line2 interrupt.
-  */
-void EXTI2_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI2_IRQn 0 */
-
-  /* USER CODE END EXTI2_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(Key_LED_Pin);
-  /* USER CODE BEGIN EXTI2_IRQn 1 */
-
-  /* USER CODE END EXTI2_IRQn 1 */
-}
-
-/**
   * @brief This function handles ADC1 global interrupt.
   */
 void ADC_IRQHandler(void)
@@ -249,7 +231,7 @@ void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
   //HAL_ADC_Start_IT(&hadc1);
-  HAL_ADC_Start_DMA(&hadc1, AD_RES_BUFFER, 5);
+  HAL_ADC_Start_DMA(&hadc1, AD_RES_BUFFER, 4);
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
@@ -275,15 +257,10 @@ void DMA2_Stream0_IRQHandler(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
  // Conversion Complete & DMA Transfer Complete As Well
- ADC1IN1 = AD_RES_BUFFER[0]; // PA1 - DS18B20
- ADC1IN5 = AD_RES_BUFFER[1]; // PA5 - DHT11
- ADC1IN6 = AD_RES_BUFFER[2]; // PA6 - LDR2
- ADC1IN7 = AD_RES_BUFFER[3]; // PA7 - MÓDULO LDR
- ADC1TempChannel = AD_RES_BUFFER[4];
- voltage1 = (ADC1IN1 * 3.3) /4095;
- voltage5 = (ADC1IN5 * 3.3) /4095;
- voltage6 = (ADC1IN6 * 3.3) /4095;
- voltage7 = (ADC1IN7 * 3.3) /4095;
+ ADC1IN1 = AD_RES_BUFFER[0];
+ ADC1IN7 = AD_RES_BUFFER[1];
+ ADC1IN3 = AD_RES_BUFFER[2];
+ ADC1IN4 = AD_RES_BUFFER[3];
 }
 
 /* USER CODE END 1 */
