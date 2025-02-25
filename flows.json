@@ -252,9 +252,13 @@
         "snapshotheader": "",
         "mode": "direct",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "lastImportedTime": 1739357085350,
 =======
         "lastImportedTime": 1740106717397,
+>>>>>>> branch-novo
+=======
+        "lastImportedTime": 1740440690514,
 >>>>>>> branch-novo
         "openStatus": true,
         "x": 400,
@@ -490,7 +494,7 @@
         "type": "debug",
         "z": "7b9ed63e.2138f8",
         "name": "debug 2",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -565,7 +569,6 @@
         "y": 320,
         "wires": [
             [
-                "511e5def38d5331c",
                 "6013fb0b.5b7504"
             ]
         ]
@@ -588,7 +591,8 @@
         "wires": [
             [
                 "5e49f805945f173d",
-                "75d02948c796e4ed"
+                "75d02948c796e4ed",
+                "ba0751b03c736906"
             ]
         ]
     },
@@ -914,7 +918,7 @@
         "type": "debug",
         "z": "7b9ed63e.2138f8",
         "name": "debug 10",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1320,6 +1324,56 @@
         "wires": []
     },
     {
+<<<<<<< HEAD
+>>>>>>> branch-novo
+=======
+        "id": "ba0751b03c736906",
+        "type": "template",
+        "z": "7b9ed63e.2138f8",
+        "name": "temp",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n   \"variablelist\":[\n      {\n         \"address\":\"0x200001a0\",\n         \"type\":1,\n         \"value\":\"{{payload}}\"\n      }\n   ],\n   \"accesspoint\":0\n}",
+        "output": "json",
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "b8297b652dc86c22"
+            ]
+        ]
+    },
+    {
+        "id": "b8297b652dc86c22",
+        "type": "change",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "write",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 380,
+        "wires": [
+            [
+                "6013fb0b.5b7504",
+                "511e5def38d5331c"
+            ]
+        ]
+    },
+    {
 >>>>>>> branch-novo
         "id": "f9c34dde.1e2f4",
         "type": "ui_group",
@@ -1409,16 +1463,24 @@
                 "checked": true
             },
             {
+<<<<<<< HEAD
                 "address": "0x08008e58",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008d78",
 >>>>>>> branch-novo
                 "name": "AHBPrescTable[0]",
                 "type": 1
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007270",
 =======
                 "address": "0x08008e68",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008d88",
 >>>>>>> branch-novo
                 "name": "APBPrescTable[0]",
                 "type": 1
@@ -1435,81 +1497,117 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007164",
 =======
                 "address": "0x08008d60",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c80",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.attr_bits",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007168",
 =======
                 "address": "0x08008d64",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c84",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.cb_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x0800716c",
 =======
                 "address": "0x08008d68",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c88",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.cb_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007160",
 =======
                 "address": "0x08008d5c",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c7c",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.name",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007178",
 =======
                 "address": "0x08008d74",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c94",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.priority",
                 "type": 4
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007180",
 =======
                 "address": "0x08008d7c",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c9c",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.reserved",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007170",
 =======
                 "address": "0x08008d6c",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c8c",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.stack_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007174",
 =======
                 "address": "0x08008d70",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c90",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.stack_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x0800717c",
 =======
                 "address": "0x08008d78",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008c98",
 >>>>>>> branch-novo
                 "name": "defaultTask_attributes.tz_module",
                 "type": 5
@@ -1521,26 +1619,30 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x200001b4",
                 "name": "DiffA",
                 "type": 4
 =======
                 "address": "0x08008e34",
+=======
+                "address": "0x08008d54",
+>>>>>>> branch-novo
                 "name": "DHT11Mutex_attributes.attr_bits",
                 "type": 5
             },
             {
-                "address": "0x08008e38",
+                "address": "0x08008d58",
                 "name": "DHT11Mutex_attributes.cb_mem",
                 "type": 5
             },
             {
-                "address": "0x08008e3c",
+                "address": "0x08008d5c",
                 "name": "DHT11Mutex_attributes.cb_size",
                 "type": 5
             },
             {
-                "address": "0x08008e30",
+                "address": "0x08008d50",
                 "name": "DHT11Mutex_attributes.name",
                 "type": 5
             },
@@ -1550,22 +1652,22 @@
                 "type": 5
             },
             {
-                "address": "0x08008e44",
+                "address": "0x08008d64",
                 "name": "DS18B20Mutex_attributes.attr_bits",
                 "type": 5
             },
             {
-                "address": "0x08008e48",
+                "address": "0x08008d68",
                 "name": "DS18B20Mutex_attributes.cb_mem",
                 "type": 5
             },
             {
-                "address": "0x08008e4c",
+                "address": "0x08008d6c",
                 "name": "DS18B20Mutex_attributes.cb_size",
                 "type": 5
             },
             {
-                "address": "0x08008e40",
+                "address": "0x08008d60",
                 "name": "DS18B20Mutex_attributes.name",
                 "type": 5
             },
@@ -2064,24 +2166,28 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x20000194",
 =======
                 "address": "0x08008e14",
+=======
+                "address": "0x08008d34",
+>>>>>>> branch-novo
                 "name": "LDR1Mutex_attributes.attr_bits",
                 "type": 5
             },
             {
-                "address": "0x08008e18",
+                "address": "0x08008d38",
                 "name": "LDR1Mutex_attributes.cb_mem",
                 "type": 5
             },
             {
-                "address": "0x08008e1c",
+                "address": "0x08008d3c",
                 "name": "LDR1Mutex_attributes.cb_size",
                 "type": 5
             },
             {
-                "address": "0x08008e10",
+                "address": "0x08008d30",
                 "name": "LDR1Mutex_attributes.name",
                 "type": 5
             },
@@ -2091,22 +2197,22 @@
                 "type": 5
             },
             {
-                "address": "0x08008e24",
+                "address": "0x08008d44",
                 "name": "LDR2Mutex_attributes.attr_bits",
                 "type": 5
             },
             {
-                "address": "0x08008e28",
+                "address": "0x08008d48",
                 "name": "LDR2Mutex_attributes.cb_mem",
                 "type": 5
             },
             {
-                "address": "0x08008e2c",
+                "address": "0x08008d4c",
                 "name": "LDR2Mutex_attributes.cb_size",
                 "type": 5
             },
             {
-                "address": "0x08008e20",
+                "address": "0x08008d40",
                 "name": "LDR2Mutex_attributes.name",
                 "type": 5
             },
@@ -2279,81 +2385,117 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071ac",
 =======
                 "address": "0x08008d84",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ca4",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.attr_bits",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071b0",
 =======
                 "address": "0x08008d88",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ca8",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.cb_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071b4",
 =======
                 "address": "0x08008d8c",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cac",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.cb_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071a8",
 =======
                 "address": "0x08008d80",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ca0",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.name",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071c0",
 =======
                 "address": "0x08008d98",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cb8",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.priority",
                 "type": 4
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071c8",
 =======
                 "address": "0x08008da0",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cc0",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.reserved",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071b8",
 =======
                 "address": "0x08008d90",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cb0",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.stack_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071bc",
 =======
                 "address": "0x08008d94",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cb4",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.stack_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071c4",
 =======
                 "address": "0x08008d9c",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cbc",
 >>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.tz_module",
                 "type": 5
@@ -2369,81 +2511,117 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071f4",
 =======
                 "address": "0x08008da8",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cc8",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.attr_bits",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071f8",
 =======
                 "address": "0x08008dac",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ccc",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.cb_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071fc",
 =======
                 "address": "0x08008db0",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cd0",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.cb_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x080071f0",
 =======
                 "address": "0x08008da4",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cc4",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.name",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007208",
 =======
                 "address": "0x08008dbc",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cdc",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.priority",
                 "type": 4
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007210",
 =======
                 "address": "0x08008dc4",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ce4",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.reserved",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007200",
 =======
                 "address": "0x08008db4",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cd4",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.stack_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007204",
 =======
                 "address": "0x08008db8",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cd8",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.stack_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x0800720c",
 =======
                 "address": "0x08008dc0",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ce0",
 >>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.tz_module",
                 "type": 5
@@ -2459,81 +2637,117 @@
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007218",
 =======
                 "address": "0x08008dcc",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cec",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.attr_bits",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x0800721c",
 =======
                 "address": "0x08008dd0",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cf0",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.cb_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007220",
 =======
                 "address": "0x08008dd4",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cf4",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.cb_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007214",
 =======
                 "address": "0x08008dc8",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008ce8",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.name",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x0800722c",
 =======
                 "address": "0x08008de0",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008d00",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.priority",
                 "type": 4
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007234",
 =======
                 "address": "0x08008de8",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008d08",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.reserved",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007224",
 =======
                 "address": "0x08008dd8",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cf8",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.stack_mem",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007228",
 =======
                 "address": "0x08008ddc",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008cfc",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.stack_size",
                 "type": 5
             },
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "address": "0x08007230",
 =======
                 "address": "0x08008de4",
+>>>>>>> branch-novo
+=======
+                "address": "0x08008d04",
 >>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.tz_module",
                 "type": 5
@@ -2548,6 +2762,7 @@
                 "type": 5
             },
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
                 "address": "0x200001bc",
                 "name": "sensorA",
@@ -2603,46 +2818,49 @@
                 "name": "SensorBMutexHandle",
 =======
                 "address": "0x08008df0",
+=======
+                "address": "0x08008d10",
+>>>>>>> branch-novo
                 "name": "ReleCH4Task_attributes.attr_bits",
                 "type": 5
             },
             {
-                "address": "0x08008df4",
+                "address": "0x08008d14",
                 "name": "ReleCH4Task_attributes.cb_mem",
                 "type": 5
             },
             {
-                "address": "0x08008df8",
+                "address": "0x08008d18",
                 "name": "ReleCH4Task_attributes.cb_size",
                 "type": 5
             },
             {
-                "address": "0x08008dec",
+                "address": "0x08008d0c",
                 "name": "ReleCH4Task_attributes.name",
                 "type": 5
             },
             {
-                "address": "0x08008e04",
+                "address": "0x08008d24",
                 "name": "ReleCH4Task_attributes.priority",
                 "type": 4
             },
             {
-                "address": "0x08008e0c",
+                "address": "0x08008d2c",
                 "name": "ReleCH4Task_attributes.reserved",
                 "type": 5
             },
             {
-                "address": "0x08008dfc",
+                "address": "0x08008d1c",
                 "name": "ReleCH4Task_attributes.stack_mem",
                 "type": 5
             },
             {
-                "address": "0x08008e00",
+                "address": "0x08008d20",
                 "name": "ReleCH4Task_attributes.stack_size",
                 "type": 5
             },
             {
-                "address": "0x08008e08",
+                "address": "0x08008d28",
                 "name": "ReleCH4Task_attributes.tz_module",
                 "type": 5
             },
@@ -2720,7 +2938,7 @@
                 "address": "0x200001a0",
                 "name": "temperature",
                 "type": 9,
-                "checked": false
+                "checked": true
             },
             {
                 "address": "0x20000f30",
@@ -3313,11 +3531,16 @@
         "expand": false,
         "filename": "IOT.elf",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "exeModifiedTime": 1738716732458,
         "configLastUpdate": 1739357084863
 =======
         "exeModifiedTime": 1740097249435,
         "configLastUpdate": 1740102797202
+>>>>>>> branch-novo
+=======
+        "exeModifiedTime": 1740174147624,
+        "configLastUpdate": 1740440035492
 >>>>>>> branch-novo
     },
     {

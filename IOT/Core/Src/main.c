@@ -112,7 +112,7 @@ bool BLUELED = 0;
 bool LED_Test;
 int LDRSENSOR, LDRSENSOR2;
 float DS18B20_Sensor = 0.0f;
-float temperature;
+float temperature = 0.0f;
 uint32_t adc_value = 0; // Variável para armazenar o valor do ADC
 uint32_t AD_RES_BUFFER[2];
 uint32_t ADC1IN6, ADC1IN7;
@@ -583,7 +583,7 @@ void StartReleCH2Task(void *argument)
       HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH1 OFF
 
     LDRSENSOR = ADC1IN7;
-    osDelay(1);
+    osDelay(500);
   }
   /* USER CODE END StartReleCH2Task */
 }
@@ -601,7 +601,7 @@ void StartReleCH3Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    temperature = 10;
+    
     //temperature = temp_sensor.read_temp_celsius();
     if (temperature > 25)
       HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET); // Rele CH3 ON - Ventilador
@@ -625,14 +625,14 @@ void StartTeleCH4Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    if (ADC1IN6 < 1600)
+    if (ADC1IN6 < 1700)
     
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH4 ON
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET); // Rele CH4 ON
     else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH4 OFF
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET); // Rele CH4 OFF
 
     LDRSENSOR2 = ADC1IN6;
-    osDelay(1);
+    osDelay(500);
   }
   /* USER CODE END StartTeleCH4Task */
 }

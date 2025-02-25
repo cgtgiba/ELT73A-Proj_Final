@@ -71,3 +71,7 @@ PA7 (LDR1)     --> PC14 (Relé CH2)
 ![Imagem do WhatsApp de 2025-02-21 à(s) 15 37 16_ac2d3330](https://github.com/user-attachments/assets/8792de7e-fd52-4b26-8a54-49f52d8f6089)
 
 >>>>>>> branch-novo
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch-novo
