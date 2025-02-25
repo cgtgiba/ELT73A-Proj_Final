@@ -184,14 +184,23 @@
         "name": "myChart",
         "order": 4,
         "width": 15,
+<<<<<<< HEAD
         "height": "5",
+=======
+        "height": "6",
+>>>>>>> branch-novo
         "chartType": "line",
         "curveType": "linear",
         "duration": "10",
         "ymin": "",
         "ymax": "",
+<<<<<<< HEAD
         "x": 620,
         "y": 400,
+=======
+        "x": 680,
+        "y": 440,
+>>>>>>> branch-novo
         "wires": []
     },
     {
@@ -200,7 +209,11 @@
         "z": "7b9ed63e.2138f8",
         "name": "myProbe_Out",
         "probeconfig": "c5bd95bc0fc7e383",
+<<<<<<< HEAD
         "x": 980,
+=======
+        "x": 960,
+>>>>>>> branch-novo
         "y": 140,
         "wires": []
     },
@@ -211,7 +224,11 @@
         "name": "myProbe_In",
         "probeconfig": "89ae31b472cca7fe",
         "x": 190,
+<<<<<<< HEAD
         "y": 500,
+=======
+        "y": 580,
+>>>>>>> branch-novo
         "wires": [
             [
                 "a7c3e070.5a6c"
@@ -234,7 +251,11 @@
         "frequencyType": "1",
         "snapshotheader": "",
         "mode": "direct",
+<<<<<<< HEAD
         "lastImportedTime": 1739357085350,
+=======
+        "lastImportedTime": 1740106717397,
+>>>>>>> branch-novo
         "openStatus": true,
         "x": 400,
         "y": 120,
@@ -268,8 +289,13 @@
         "payloadType": "str",
         "topic": "clear",
         "topicType": "str",
+<<<<<<< HEAD
         "x": 410,
         "y": 400,
+=======
+        "x": 490,
+        "y": 440,
+>>>>>>> branch-novo
         "wires": [
             [
                 "1ebbb430.dac7dc"
@@ -341,14 +367,25 @@
         "logmode": "no",
         "logformat": "stcm",
         "x": 400,
+<<<<<<< HEAD
         "y": 500,
+=======
+        "y": 580,
+>>>>>>> branch-novo
         "wires": [
             [
                 "1ebbb430.dac7dc",
                 "2a79dcf4fbcdb01f",
                 "2292793f88411933",
                 "3d940e39eed154f2",
+<<<<<<< HEAD
                 "7402ec7f8311c955"
+=======
+                "7402ec7f8311c955",
+                "53fccd02d7858ec4",
+                "d2f0c39e1aa4cb2f",
+                "854ee4b201585b7e"
+>>>>>>> branch-novo
             ],
             []
         ]
@@ -491,7 +528,11 @@
         "fieldType": "msg",
         "format": "json",
         "syntax": "mustache",
+<<<<<<< HEAD
         "template": "{\n   \"variablelist\":[\n      {\n         \"address\":\"0x20000190\",\n         \"type\":1,\n         \"value\":\"{{payload}}\"\n      }\n   ],\n   \"accesspoint\":0\n}",
+=======
+        "template": "{\n   \"variablelist\":[\n      {\n         \"address\":\"0x20000194\",\n         \"type\":1,\n         \"value\":\"{{payload}}\"\n      }\n   ],\n   \"accesspoint\":0\n}",
+>>>>>>> branch-novo
         "output": "json",
         "x": 420,
         "y": 320,
@@ -595,8 +636,13 @@
         "shape": "circle",
         "showGlow": true,
         "name": "BlueLED",
+<<<<<<< HEAD
         "x": 920,
         "y": 440,
+=======
+        "x": 940,
+        "y": 520,
+>>>>>>> branch-novo
         "wires": []
     },
     {
@@ -612,7 +658,11 @@
             }
         ],
         "x": 690,
+<<<<<<< HEAD
         "y": 440,
+=======
+        "y": 520,
+>>>>>>> branch-novo
         "wires": [
             [
                 "dada0cb233bc58e8",
@@ -625,12 +675,21 @@
         "type": "ui_gauge",
         "z": "7b9ed63e.2138f8",
         "name": "",
+<<<<<<< HEAD
         "group": "f9c34dde.1e2f4",
         "order": 6,
         "width": "4",
         "height": "4",
         "gtype": "compass",
         "title": "LDR",
+=======
+        "group": "acfc979c6b3842c0",
+        "order": 6,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "LDR1",
+>>>>>>> branch-novo
         "label": "",
         "format": "{{value}}",
         "min": 0,
@@ -645,7 +704,11 @@
         "diff": false,
         "className": "",
         "x": 930,
+<<<<<<< HEAD
         "y": 500,
+=======
+        "y": 600,
+>>>>>>> branch-novo
         "wires": []
     },
     {
@@ -661,7 +724,11 @@
             }
         ],
         "x": 680,
+<<<<<<< HEAD
         "y": 500,
+=======
+        "y": 620,
+>>>>>>> branch-novo
         "wires": [
             [
                 "5e694fb1209a268b",
@@ -679,23 +746,38 @@
         "width": 0,
         "height": 0,
         "name": "",
+<<<<<<< HEAD
         "label": "ADC1IN7",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
+=======
+        "label": "ADC1IN7-LDR1",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+>>>>>>> branch-novo
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
+<<<<<<< HEAD
         "x": 880,
         "y": 680,
+=======
+        "x": 960,
+        "y": 800,
+>>>>>>> branch-novo
         "wires": []
     },
     {
         "id": "3d940e39eed154f2",
         "type": "subflow:8381c865.236028",
         "z": "7b9ed63e.2138f8",
+<<<<<<< HEAD
         "name": "ADC1IN7",
+=======
+        "name": "ADC1IN7-LDR1",
+>>>>>>> branch-novo
         "env": [
             {
                 "name": "varfilter",
@@ -703,8 +785,13 @@
                 "type": "str"
             }
         ],
+<<<<<<< HEAD
         "x": 700,
         "y": 680,
+=======
+        "x": 680,
+        "y": 800,
+>>>>>>> branch-novo
         "wires": [
             [
                 "924417a400197475"
@@ -720,22 +807,34 @@
         "width": 0,
         "height": 0,
         "name": "",
+<<<<<<< HEAD
         "label": "ADC1IN1",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
+=======
+        "label": "ADC1IN6-LDR2",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+>>>>>>> branch-novo
         "className": "",
         "style": false,
         "font": "",
         "fontSize": 16,
         "color": "#000000",
+<<<<<<< HEAD
         "x": 880,
         "y": 720,
+=======
+        "x": 960,
+        "y": 840,
+>>>>>>> branch-novo
         "wires": []
     },
     {
         "id": "7402ec7f8311c955",
         "type": "subflow:8381c865.236028",
         "z": "7b9ed63e.2138f8",
+<<<<<<< HEAD
         "name": "ADC1IN1",
         "env": [
             {
@@ -746,6 +845,18 @@
         ],
         "x": 700,
         "y": 720,
+=======
+        "name": "ADC1IN6-LDR2",
+        "env": [
+            {
+                "name": "varfilter",
+                "value": "ADC1IN6",
+                "type": "str"
+            }
+        ],
+        "x": 680,
+        "y": 840,
+>>>>>>> branch-novo
         "wires": [
             [
                 "d15b3c5feb95ac19"
@@ -766,7 +877,11 @@
         "rh": 0,
         "inputs": 0,
         "x": 200,
+<<<<<<< HEAD
         "y": 760,
+=======
+        "y": 840,
+>>>>>>> branch-novo
         "wires": [
             []
         ]
@@ -785,8 +900,13 @@
         "correl": "",
         "expiry": "",
         "broker": "6e10154a880de761",
+<<<<<<< HEAD
         "x": 920,
         "y": 600,
+=======
+        "x": 1160,
+        "y": 620,
+>>>>>>> branch-novo
         "wires": []
     },
     {
@@ -802,8 +922,13 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
+<<<<<<< HEAD
         "x": 1160,
         "y": 320,
+=======
+        "x": 1080,
+        "y": 420,
+>>>>>>> branch-novo
         "wires": []
     },
     {
@@ -821,7 +946,11 @@
         "expiry": "",
         "broker": "6e10154a880de761",
         "x": 1160,
+<<<<<<< HEAD
         "y": 380,
+=======
+        "y": 460,
+>>>>>>> branch-novo
         "wires": []
     },
     {
@@ -836,6 +965,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
+<<<<<<< HEAD
         "x": 1000,
         "y": 340,
         "wires": [
@@ -861,6 +991,10 @@
         "outputs": 1,
         "x": 860,
         "y": 840,
+=======
+        "x": 920,
+        "y": 420,
+>>>>>>> branch-novo
         "wires": [
             []
         ]
@@ -877,8 +1011,13 @@
         "septopics": true,
         "property": "payload",
         "topi": "topic",
+<<<<<<< HEAD
         "x": 870,
         "y": 380,
+=======
+        "x": 930,
+        "y": 460,
+>>>>>>> branch-novo
         "wires": [
             [
                 "20410e039e8fcce0",
@@ -890,11 +1029,19 @@
         "id": "60732cb67a9e2d15",
         "type": "ui_chart",
         "z": "7b9ed63e.2138f8",
+<<<<<<< HEAD
         "name": "LDR",
         "group": "f9c34dde.1e2f4",
         "order": 9,
         "width": "6",
         "height": "4",
+=======
+        "name": "LDR1",
+        "group": "acfc979c6b3842c0",
+        "order": 9,
+        "width": "6",
+        "height": "6",
+>>>>>>> branch-novo
         "label": "chart",
         "chartType": "line",
         "legend": "true",
@@ -904,7 +1051,11 @@
         "dot": false,
         "ymin": "",
         "ymax": "",
+<<<<<<< HEAD
         "removeOlder": "20",
+=======
+        "removeOlder": "5",
+>>>>>>> branch-novo
         "removeOlderPoints": "",
         "removeOlderUnit": "60",
         "cutout": 0,
@@ -925,12 +1076,251 @@
         "useDifferentColor": false,
         "className": "",
         "x": 930,
+<<<<<<< HEAD
         "y": 540,
+=======
+        "y": 640,
+>>>>>>> branch-novo
         "wires": [
             []
         ]
     },
     {
+<<<<<<< HEAD
+=======
+        "id": "b51527c8266e4845",
+        "type": "ui_gauge",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "acfc979c6b3842c0",
+        "order": 6,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "LDR2",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4095",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#00b500"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 930,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "53fccd02d7858ec4",
+        "type": "subflow:8381c865.236028",
+        "z": "7b9ed63e.2138f8",
+        "name": "LDRSENSOR2",
+        "env": [
+            {
+                "name": "varfilter",
+                "value": "LDRSENSOR2",
+                "type": "str"
+            }
+        ],
+        "x": 680,
+        "y": 720,
+        "wires": [
+            [
+                "4e43a0f4e51ad4d3",
+                "578ba169b084b1a5",
+                "b51527c8266e4845"
+            ]
+        ]
+    },
+    {
+        "id": "4e43a0f4e51ad4d3",
+        "type": "mqtt out",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "topic": "banc_ldr2",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6e10154a880de761",
+        "x": 1160,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "578ba169b084b1a5",
+        "type": "ui_chart",
+        "z": "7b9ed63e.2138f8",
+        "name": "LDR2",
+        "group": "acfc979c6b3842c0",
+        "order": 9,
+        "width": "6",
+        "height": "6",
+        "label": "chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a44789c4c3d54d6e",
+        "type": "ui_text",
+        "z": "7b9ed63e.2138f8",
+        "group": "f9c34dde.1e2f4",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "voltage6",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 938,
+        "y": 910,
+        "wires": []
+    },
+    {
+        "id": "d2f0c39e1aa4cb2f",
+        "type": "subflow:8381c865.236028",
+        "z": "7b9ed63e.2138f8",
+        "name": "voltage6",
+        "env": [
+            {
+                "name": "varfilter",
+                "value": "voltage6",
+                "type": "str"
+            }
+        ],
+        "x": 658,
+        "y": 910,
+        "wires": [
+            [
+                "a44789c4c3d54d6e",
+                "f035f3abee343aaa"
+            ]
+        ]
+    },
+    {
+        "id": "f8ff2aa22ed49f50",
+        "type": "ui_text",
+        "z": "7b9ed63e.2138f8",
+        "group": "f9c34dde.1e2f4",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "voltage7",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 938,
+        "y": 950,
+        "wires": []
+    },
+    {
+        "id": "854ee4b201585b7e",
+        "type": "subflow:8381c865.236028",
+        "z": "7b9ed63e.2138f8",
+        "name": "voltage7",
+        "env": [
+            {
+                "name": "varfilter",
+                "value": "voltage7",
+                "type": "str"
+            }
+        ],
+        "x": 658,
+        "y": 950,
+        "wires": [
+            [
+                "f8ff2aa22ed49f50",
+                "d205ef45f018994c"
+            ]
+        ]
+    },
+    {
+        "id": "f035f3abee343aaa",
+        "type": "mqtt out",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "topic": "banc_ldr_voltage",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6e10154a880de761",
+        "x": 1150,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "d205ef45f018994c",
+        "type": "mqtt out",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "topic": "banc_ldr2_voltage",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6e10154a880de761",
+        "x": 1150,
+        "y": 920,
+        "wires": []
+    },
+    {
+>>>>>>> branch-novo
         "id": "f9c34dde.1e2f4",
         "type": "ui_group",
         "name": "Chart",
@@ -973,18 +1363,28 @@
         "exefolder": "C:\\LAB\\ELT73A_Projeto_final\\ELT73A-Proj_Final\\IOT\\build\\Debug",
         "exevariablelist": [
             {
+<<<<<<< HEAD
                 "address": "0x2000019c",
+=======
+                "address": "0x200001a4",
+>>>>>>> branch-novo
                 "name": "AD_RES_BUFFER[0]",
                 "type": 5
             },
             {
                 "address": "0x200001ac",
+<<<<<<< HEAD
                 "name": "ADC1IN1",
                 "type": 3,
+=======
+                "name": "ADC1IN6",
+                "type": 5,
+>>>>>>> branch-novo
                 "checked": true
             },
             {
                 "address": "0x200001b0",
+<<<<<<< HEAD
                 "name": "ADC1IN3",
                 "type": 3,
                 "checked": false
@@ -1003,62 +1403,114 @@
             },
             {
                 "address": "0x08007260",
+=======
+                "name": "ADC1IN7",
+                "type": 5,
+                "checked": true
+            },
+            {
+                "address": "0x08008e58",
+>>>>>>> branch-novo
                 "name": "AHBPrescTable[0]",
                 "type": 1
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007270",
+=======
+                "address": "0x08008e68",
+>>>>>>> branch-novo
                 "name": "APBPrescTable[0]",
                 "type": 1
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000190",
+=======
+                "address": "0x20000194",
+>>>>>>> branch-novo
                 "name": "BLUELED",
                 "type": 1,
                 "checked": true
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007164",
+=======
+                "address": "0x08008d60",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.attr_bits",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007168",
+=======
+                "address": "0x08008d64",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.cb_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x0800716c",
+=======
+                "address": "0x08008d68",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.cb_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007160",
+=======
+                "address": "0x08008d5c",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.name",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007178",
+=======
+                "address": "0x08008d74",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.priority",
                 "type": 4
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007180",
+=======
+                "address": "0x08008d7c",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.reserved",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007170",
+=======
+                "address": "0x08008d6c",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.stack_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007174",
+=======
+                "address": "0x08008d70",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.stack_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x0800717c",
+=======
+                "address": "0x08008d78",
+>>>>>>> branch-novo
                 "name": "defaultTask_attributes.tz_module",
                 "type": 5
             },
@@ -1068,9 +1520,60 @@
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200001b4",
                 "name": "DiffA",
                 "type": 4
+=======
+                "address": "0x08008e34",
+                "name": "DHT11Mutex_attributes.attr_bits",
+                "type": 5
+            },
+            {
+                "address": "0x08008e38",
+                "name": "DHT11Mutex_attributes.cb_mem",
+                "type": 5
+            },
+            {
+                "address": "0x08008e3c",
+                "name": "DHT11Mutex_attributes.cb_size",
+                "type": 5
+            },
+            {
+                "address": "0x08008e30",
+                "name": "DHT11Mutex_attributes.name",
+                "type": 5
+            },
+            {
+                "address": "0x2000018c",
+                "name": "DHT11MutexHandle",
+                "type": 5
+            },
+            {
+                "address": "0x08008e44",
+                "name": "DS18B20Mutex_attributes.attr_bits",
+                "type": 5
+            },
+            {
+                "address": "0x08008e48",
+                "name": "DS18B20Mutex_attributes.cb_mem",
+                "type": 5
+            },
+            {
+                "address": "0x08008e4c",
+                "name": "DS18B20Mutex_attributes.cb_size",
+                "type": 5
+            },
+            {
+                "address": "0x08008e40",
+                "name": "DS18B20Mutex_attributes.name",
+                "type": 5
+            },
+            {
+                "address": "0x20000190",
+                "name": "DS18B20MutexHandle",
+                "type": 5
+>>>>>>> branch-novo
             },
             {
                 "address": "0x20000064",
@@ -1408,6 +1911,79 @@
                 "type": 3
             },
             {
+<<<<<<< HEAD
+=======
+                "address": "0x200001d8",
+                "name": "htim10.Channel",
+                "type": 2
+            },
+            {
+                "address": "0x200001fe",
+                "name": "htim10.ChannelNState[0]",
+                "type": 2
+            },
+            {
+                "address": "0x200001fa",
+                "name": "htim10.ChannelState[0]",
+                "type": 2
+            },
+            {
+                "address": "0x20000202",
+                "name": "htim10.DMABurstState",
+                "type": 2
+            },
+            {
+                "address": "0x200001dc",
+                "name": "htim10.hdma[0]",
+                "type": 5
+            },
+            {
+                "address": "0x200001d4",
+                "name": "htim10.Init.AutoReloadPreload",
+                "type": 5
+            },
+            {
+                "address": "0x200001cc",
+                "name": "htim10.Init.ClockDivision",
+                "type": 5
+            },
+            {
+                "address": "0x200001c4",
+                "name": "htim10.Init.CounterMode",
+                "type": 5
+            },
+            {
+                "address": "0x200001c8",
+                "name": "htim10.Init.Period",
+                "type": 5
+            },
+            {
+                "address": "0x200001c0",
+                "name": "htim10.Init.Prescaler",
+                "type": 5
+            },
+            {
+                "address": "0x200001d0",
+                "name": "htim10.Init.RepetitionCounter",
+                "type": 5
+            },
+            {
+                "address": "0x200001bc",
+                "name": "htim10.Instance",
+                "type": 5
+            },
+            {
+                "address": "0x200001f8",
+                "name": "htim10.Lock",
+                "type": 2
+            },
+            {
+                "address": "0x200001f9",
+                "name": "htim10.State",
+                "type": 2
+            },
+            {
+>>>>>>> branch-novo
                 "address": "0x20000144",
                 "name": "htim2.Channel",
                 "type": 2
@@ -1478,17 +2054,76 @@
                 "type": 2
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000830",
+=======
+                "address": "0x20000874",
+>>>>>>> branch-novo
                 "name": "KernelState",
                 "type": 4
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000194",
+=======
+                "address": "0x08008e14",
+                "name": "LDR1Mutex_attributes.attr_bits",
+                "type": 5
+            },
+            {
+                "address": "0x08008e18",
+                "name": "LDR1Mutex_attributes.cb_mem",
+                "type": 5
+            },
+            {
+                "address": "0x08008e1c",
+                "name": "LDR1Mutex_attributes.cb_size",
+                "type": 5
+            },
+            {
+                "address": "0x08008e10",
+                "name": "LDR1Mutex_attributes.name",
+                "type": 5
+            },
+            {
+                "address": "0x20000184",
+                "name": "LDR1MutexHandle",
+                "type": 5
+            },
+            {
+                "address": "0x08008e24",
+                "name": "LDR2Mutex_attributes.attr_bits",
+                "type": 5
+            },
+            {
+                "address": "0x08008e28",
+                "name": "LDR2Mutex_attributes.cb_mem",
+                "type": 5
+            },
+            {
+                "address": "0x08008e2c",
+                "name": "LDR2Mutex_attributes.cb_size",
+                "type": 5
+            },
+            {
+                "address": "0x08008e20",
+                "name": "LDR2Mutex_attributes.name",
+                "type": 5
+            },
+            {
+                "address": "0x20000188",
+                "name": "LDR2MutexHandle",
+                "type": 5
+            },
+            {
+                "address": "0x20000198",
+>>>>>>> branch-novo
                 "name": "LDRSENSOR",
                 "type": 6,
                 "checked": true
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007188",
                 "name": "LEDTask_attributes.attr_bits",
                 "type": 5
@@ -1540,210 +2175,380 @@
             },
             {
                 "address": "0x20000204",
+=======
+                "address": "0x2000019c",
+                "name": "LDRSENSOR2",
+                "type": 6,
+                "checked": true
+            },
+            {
+                "address": "0x20000248",
+>>>>>>> branch-novo
                 "name": "pxCurrentTCB",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000072c",
+=======
+                "address": "0x20000770",
+>>>>>>> branch-novo
                 "name": "pxCurrentTimerList",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000690",
+=======
+                "address": "0x200006d4",
+>>>>>>> branch-novo
                 "name": "pxDelayedTaskList",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004af4",
+=======
+                "address": "0x20004b38",
+>>>>>>> branch-novo
                 "name": "pxEnd",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000694",
+=======
+                "address": "0x200006d8",
+>>>>>>> branch-novo
                 "name": "pxOverflowDelayedTaskList",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000730",
+=======
+                "address": "0x20000774",
+>>>>>>> branch-novo
                 "name": "pxOverflowTimerList",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000020c",
+=======
+                "address": "0x20000250",
+>>>>>>> branch-novo
                 "name": "pxReadyTasksLists[0].pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000208",
+=======
+                "address": "0x2000024c",
+>>>>>>> branch-novo
                 "name": "pxReadyTasksLists[0].uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000214",
+=======
+                "address": "0x20000258",
+>>>>>>> branch-novo
                 "name": "pxReadyTasksLists[0].xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000218",
+=======
+                "address": "0x2000025c",
+>>>>>>> branch-novo
                 "name": "pxReadyTasksLists[0].xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000210",
+=======
+                "address": "0x20000254",
+>>>>>>> branch-novo
                 "name": "pxReadyTasksLists[0].xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071ac",
+=======
+                "address": "0x08008d84",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.attr_bits",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071b0",
+=======
+                "address": "0x08008d88",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.cb_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071b4",
+=======
+                "address": "0x08008d8c",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.cb_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071a8",
+=======
+                "address": "0x08008d80",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.name",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071c0",
+=======
+                "address": "0x08008d98",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.priority",
                 "type": 4
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071c8",
+=======
+                "address": "0x08008da0",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.reserved",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071b8",
+=======
+                "address": "0x08008d90",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.stack_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071bc",
+=======
+                "address": "0x08008d94",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.stack_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071c4",
+=======
+                "address": "0x08008d9c",
+>>>>>>> branch-novo
                 "name": "ReleCH1Task_attributes.tz_module",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000178",
+=======
+                "address": "0x20000174",
+>>>>>>> branch-novo
                 "name": "ReleCH1TaskHandle",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071f4",
+=======
+                "address": "0x08008da8",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.attr_bits",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071f8",
+=======
+                "address": "0x08008dac",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.cb_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071fc",
+=======
+                "address": "0x08008db0",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.cb_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x080071f0",
+=======
+                "address": "0x08008da4",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.name",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007208",
+=======
+                "address": "0x08008dbc",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.priority",
                 "type": 4
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007210",
+=======
+                "address": "0x08008dc4",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.reserved",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007200",
+=======
+                "address": "0x08008db4",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.stack_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007204",
+=======
+                "address": "0x08008db8",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.stack_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x0800720c",
+=======
+                "address": "0x08008dc0",
+>>>>>>> branch-novo
                 "name": "ReleCH2Task_attributes.tz_module",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000180",
+=======
+                "address": "0x20000178",
+>>>>>>> branch-novo
                 "name": "ReleCH2TaskHandle",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007218",
+=======
+                "address": "0x08008dcc",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.attr_bits",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x0800721c",
+=======
+                "address": "0x08008dd0",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.cb_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007220",
+=======
+                "address": "0x08008dd4",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.cb_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007214",
+=======
+                "address": "0x08008dc8",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.name",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x0800722c",
+=======
+                "address": "0x08008de0",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.priority",
                 "type": 4
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007234",
+=======
+                "address": "0x08008de8",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.reserved",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007224",
+=======
+                "address": "0x08008dd8",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.stack_mem",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007228",
+=======
+                "address": "0x08008ddc",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.stack_size",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x08007230",
+=======
+                "address": "0x08008de4",
+>>>>>>> branch-novo
                 "name": "ReleCH3Task_attributes.tz_module",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000184",
+=======
+                "address": "0x2000017c",
+>>>>>>> branch-novo
                 "name": "ReleCH3TaskHandle",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200001bc",
                 "name": "sensorA",
                 "type": 5
@@ -1796,6 +2601,55 @@
             {
                 "address": "0x2000018c",
                 "name": "SensorBMutexHandle",
+=======
+                "address": "0x08008df0",
+                "name": "ReleCH4Task_attributes.attr_bits",
+                "type": 5
+            },
+            {
+                "address": "0x08008df4",
+                "name": "ReleCH4Task_attributes.cb_mem",
+                "type": 5
+            },
+            {
+                "address": "0x08008df8",
+                "name": "ReleCH4Task_attributes.cb_size",
+                "type": 5
+            },
+            {
+                "address": "0x08008dec",
+                "name": "ReleCH4Task_attributes.name",
+                "type": 5
+            },
+            {
+                "address": "0x08008e04",
+                "name": "ReleCH4Task_attributes.priority",
+                "type": 4
+            },
+            {
+                "address": "0x08008e0c",
+                "name": "ReleCH4Task_attributes.reserved",
+                "type": 5
+            },
+            {
+                "address": "0x08008dfc",
+                "name": "ReleCH4Task_attributes.stack_mem",
+                "type": 5
+            },
+            {
+                "address": "0x08008e00",
+                "name": "ReleCH4Task_attributes.stack_size",
+                "type": 5
+            },
+            {
+                "address": "0x08008e08",
+                "name": "ReleCH4Task_attributes.tz_module",
+                "type": 5
+            },
+            {
+                "address": "0x20000180",
+                "name": "ReleCH4TaskHandle",
+>>>>>>> branch-novo
                 "type": 5
             },
             {
@@ -1804,6 +2658,7 @@
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000198",
                 "name": "temperature",
                 "type": 9,
@@ -1861,21 +2716,42 @@
             },
             {
                 "address": "0x20000eec",
+=======
+                "address": "0x200001a0",
+                "name": "temperature",
+                "type": 9,
+                "checked": false
+            },
+            {
+                "address": "0x20000f30",
+>>>>>>> branch-novo
                 "name": "ucHeap[0]",
                 "type": 1
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004b0c",
+=======
+                "address": "0x20004b50",
+>>>>>>> branch-novo
                 "name": "ucMaxSysCallPriority",
                 "type": 1
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004b10",
+=======
+                "address": "0x20004b54",
+>>>>>>> branch-novo
                 "name": "ulMaxPRIGROUPValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200001c0",
+=======
+                "address": "0x20000204",
+>>>>>>> branch-novo
                 "name": "uwTick",
                 "type": 5
             },
@@ -1895,305 +2771,554 @@
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006d8",
+=======
+                "address": "0x2000071c",
+>>>>>>> branch-novo
                 "name": "uxCurrentNumberOfTasks",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006c0",
+=======
+                "address": "0x20000704",
+>>>>>>> branch-novo
                 "name": "uxDeletedTasksWaitingCleanUp",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000700",
+=======
+                "address": "0x20000744",
+>>>>>>> branch-novo
                 "name": "uxSchedulerSuspended",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006f4",
+=======
+                "address": "0x20000738",
+>>>>>>> branch-novo
                 "name": "uxTaskNumber",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006e0",
+=======
+                "address": "0x20000724",
+>>>>>>> branch-novo
                 "name": "uxTopReadyPriority",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200001b8",
                 "name": "voltage2",
                 "type": 9
             },
             {
                 "address": "0x20000708",
+=======
+                "address": "0x200001b4",
+                "name": "voltage6",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x200001b8",
+                "name": "voltage7",
+                "type": 9,
+                "checked": true
+            },
+            {
+                "address": "0x2000074c",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList1.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000704",
+=======
+                "address": "0x20000748",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList1.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000710",
+=======
+                "address": "0x20000754",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList1.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000714",
+=======
+                "address": "0x20000758",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList1.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000070c",
+=======
+                "address": "0x20000750",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList1.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000071c",
+=======
+                "address": "0x20000760",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList2.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000718",
+=======
+                "address": "0x2000075c",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList2.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000724",
+=======
+                "address": "0x20000768",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList2.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000728",
+=======
+                "address": "0x2000076c",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList2.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000720",
+=======
+                "address": "0x20000764",
+>>>>>>> branch-novo
                 "name": "xActiveTimerList2.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004b08",
+=======
+                "address": "0x20004b4c",
+>>>>>>> branch-novo
                 "name": "xBlockAllocatedBit",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000066c",
+=======
+                "address": "0x200006b0",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList1.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000668",
+=======
+                "address": "0x200006ac",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList1.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000674",
+=======
+                "address": "0x200006b8",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList1.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000678",
+=======
+                "address": "0x200006bc",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList1.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000670",
+=======
+                "address": "0x200006b4",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList1.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000680",
+=======
+                "address": "0x200006c4",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList2.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000067c",
+=======
+                "address": "0x200006c0",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList2.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000688",
+=======
+                "address": "0x200006cc",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList2.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000068c",
+=======
+                "address": "0x200006d0",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList2.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000684",
+=======
+                "address": "0x200006c8",
+>>>>>>> branch-novo
                 "name": "xDelayedTaskList2.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004af8",
+=======
+                "address": "0x20004b3c",
+>>>>>>> branch-novo
                 "name": "xFreeBytesRemaining",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006fc",
+=======
+                "address": "0x20000740",
+>>>>>>> branch-novo
                 "name": "xIdleTaskHandle",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004afc",
+=======
+                "address": "0x20004b40",
+>>>>>>> branch-novo
                 "name": "xMinimumEverFreeBytesRemaining",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006f8",
+=======
+                "address": "0x2000073c",
+>>>>>>> branch-novo
                 "name": "xNextTaskUnblockTime",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004b00",
+=======
+                "address": "0x20004b44",
+>>>>>>> branch-novo
                 "name": "xNumberOfSuccessfulAllocations",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004b04",
+=======
+                "address": "0x20004b48",
+>>>>>>> branch-novo
                 "name": "xNumberOfSuccessfulFrees",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006f0",
+=======
+                "address": "0x20000734",
+>>>>>>> branch-novo
                 "name": "xNumOfOverflows",
                 "type": 6
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006e8",
+=======
+                "address": "0x2000072c",
+>>>>>>> branch-novo
                 "name": "xPendedTicks",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x2000069c",
+=======
+                "address": "0x200006e0",
+>>>>>>> branch-novo
                 "name": "xPendingReadyList.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000698",
+=======
+                "address": "0x200006dc",
+>>>>>>> branch-novo
                 "name": "xPendingReadyList.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006a4",
+=======
+                "address": "0x200006e8",
+>>>>>>> branch-novo
                 "name": "xPendingReadyList.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006a8",
+=======
+                "address": "0x200006ec",
+>>>>>>> branch-novo
                 "name": "xPendingReadyList.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006a0",
+=======
+                "address": "0x200006e4",
+>>>>>>> branch-novo
                 "name": "xPendingReadyList.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200001c4",
+=======
+                "address": "0x20000208",
+>>>>>>> branch-novo
                 "name": "xQueueRegistry[0].pcQueueName",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200001c8",
+=======
+                "address": "0x2000020c",
+>>>>>>> branch-novo
                 "name": "xQueueRegistry[0].xHandle",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006e4",
+=======
+                "address": "0x20000728",
+>>>>>>> branch-novo
                 "name": "xSchedulerRunning",
                 "type": 6
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004aec",
+=======
+                "address": "0x20004b30",
+>>>>>>> branch-novo
                 "name": "xStart.pxNextFreeBlock",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20004af0",
+=======
+                "address": "0x20004b34",
+>>>>>>> branch-novo
                 "name": "xStart.xBlockSize",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006c8",
+=======
+                "address": "0x2000070c",
+>>>>>>> branch-novo
                 "name": "xSuspendedTaskList.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006c4",
+=======
+                "address": "0x20000708",
+>>>>>>> branch-novo
                 "name": "xSuspendedTaskList.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006d0",
+=======
+                "address": "0x20000714",
+>>>>>>> branch-novo
                 "name": "xSuspendedTaskList.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006d4",
+=======
+                "address": "0x20000718",
+>>>>>>> branch-novo
                 "name": "xSuspendedTaskList.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006cc",
+=======
+                "address": "0x20000710",
+>>>>>>> branch-novo
                 "name": "xSuspendedTaskList.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006b0",
+=======
+                "address": "0x200006f4",
+>>>>>>> branch-novo
                 "name": "xTasksWaitingTermination.pxIndex",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006ac",
+=======
+                "address": "0x200006f0",
+>>>>>>> branch-novo
                 "name": "xTasksWaitingTermination.uxNumberOfItems",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006b8",
+=======
+                "address": "0x200006fc",
+>>>>>>> branch-novo
                 "name": "xTasksWaitingTermination.xListEnd.pxNext",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006bc",
+=======
+                "address": "0x20000700",
+>>>>>>> branch-novo
                 "name": "xTasksWaitingTermination.xListEnd.pxPrevious",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006b4",
+=======
+                "address": "0x200006f8",
+>>>>>>> branch-novo
                 "name": "xTasksWaitingTermination.xListEnd.xItemValue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006dc",
+=======
+                "address": "0x20000720",
+>>>>>>> branch-novo
                 "name": "xTickCount",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000734",
+=======
+                "address": "0x20000778",
+>>>>>>> branch-novo
                 "name": "xTimerQueue",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x20000738",
+=======
+                "address": "0x2000077c",
+>>>>>>> branch-novo
                 "name": "xTimerTaskHandle",
                 "type": 5
             },
             {
+<<<<<<< HEAD
                 "address": "0x200006ec",
+=======
+                "address": "0x20000730",
+>>>>>>> branch-novo
                 "name": "xYieldPending",
                 "type": 6
             }
         ],
         "expand": false,
         "filename": "IOT.elf",
+<<<<<<< HEAD
         "exeModifiedTime": 1738716732458,
         "configLastUpdate": 1739357084863
+=======
+        "exeModifiedTime": 1740097249435,
+        "configLastUpdate": 1740102797202
+>>>>>>> branch-novo
     },
     {
         "id": "6e10154a880de761",
@@ -2228,6 +3353,20 @@
         "sessionExpiry": ""
     },
     {
+<<<<<<< HEAD
+=======
+        "id": "acfc979c6b3842c0",
+        "type": "ui_group",
+        "name": "Monitor",
+        "tab": "17d09b07.741a55",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+>>>>>>> branch-novo
         "id": "17d09b07.741a55",
         "type": "ui_tab",
         "name": "Home",

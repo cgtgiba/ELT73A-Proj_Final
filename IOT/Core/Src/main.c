@@ -59,24 +59,10 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for LEDTask */
-osThreadId_t LEDTaskHandle;
-const osThreadAttr_t LEDTask_attributes = {
-  .name = "LEDTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
 /* Definitions for ReleCH1Task */
 osThreadId_t ReleCH1TaskHandle;
 const osThreadAttr_t ReleCH1Task_attributes = {
   .name = "ReleCH1Task",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
-/* Definitions for TEMPTask */
-osThreadId_t TEMPTaskHandle;
-const osThreadAttr_t TEMPTask_attributes = {
-  .name = "TEMPTask",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
@@ -94,30 +80,44 @@ const osThreadAttr_t ReleCH3Task_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for SensorAMutex */
-osMutexId_t SensorAMutexHandle;
-const osMutexAttr_t SensorAMutex_attributes = {
-  .name = "SensorAMutex"
+/* Definitions for ReleCH4Task */
+osThreadId_t ReleCH4TaskHandle;
+const osThreadAttr_t ReleCH4Task_attributes = {
+  .name = "ReleCH4Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for SensorBMutex */
-osMutexId_t SensorBMutexHandle;
-const osMutexAttr_t SensorBMutex_attributes = {
-  .name = "SensorBMutex"
+/* Definitions for LDR1Mutex */
+osMutexId_t LDR1MutexHandle;
+const osMutexAttr_t LDR1Mutex_attributes = {
+  .name = "LDR1Mutex"
+};
+/* Definitions for LDR2Mutex */
+osMutexId_t LDR2MutexHandle;
+const osMutexAttr_t LDR2Mutex_attributes = {
+  .name = "LDR2Mutex"
+};
+/* Definitions for DHT11Mutex */
+osMutexId_t DHT11MutexHandle;
+const osMutexAttr_t DHT11Mutex_attributes = {
+  .name = "DHT11Mutex"
+};
+/* Definitions for DS18B20Mutex */
+osMutexId_t DS18B20MutexHandle;
+const osMutexAttr_t DS18B20Mutex_attributes = {
+  .name = "DS18B20Mutex"
 };
 /* USER CODE BEGIN PV */
 bool BLUELED = 0;
 bool LED_Test;
-int LDRSENSOR = 0;
+int LDRSENSOR, LDRSENSOR2;
 float DS18B20_Sensor = 0.0f;
 float temperature;
 uint32_t adc_value = 0; // Variável para armazenar o valor do ADC
-uint32_t AD_RES_BUFFER[4];
-uint16_t ADC1IN1, ADC1IN7;
-uint16_t ADC1IN3, ADC1IN4;
-int16_t DiffA, DiffB;
-float voltage1, voltage2;
-float voltage3, voltage4;
-uint32_t sensorA,sensorB;
+uint32_t AD_RES_BUFFER[2];
+uint32_t ADC1IN6, ADC1IN7;
+float voltage6, voltage7;
+//uint32_t sensorA,sensorB;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -128,11 +128,10 @@ static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_I2C1_Init(void);
 void StartDefaultTask(void *argument);
-void StartLEDTask(void *argument);
 void StartReleCH1Task(void *argument);
-void StartTEMPTask(void *argument);
 void StartReleCH2Task(void *argument);
 void StartReleCH3Task(void *argument);
+void StartTeleCH4Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -186,11 +185,17 @@ int main(void)
   /* Init scheduler */
   osKernelInitialize();
   /* Create the mutex(es) */
-  /* creation of SensorAMutex */
-  SensorAMutexHandle = osMutexNew(&SensorAMutex_attributes);
+  /* creation of LDR1Mutex */
+  LDR1MutexHandle = osMutexNew(&LDR1Mutex_attributes);
 
-  /* creation of SensorBMutex */
-  SensorBMutexHandle = osMutexNew(&SensorBMutex_attributes);
+  /* creation of LDR2Mutex */
+  LDR2MutexHandle = osMutexNew(&LDR2Mutex_attributes);
+
+  /* creation of DHT11Mutex */
+  DHT11MutexHandle = osMutexNew(&DHT11Mutex_attributes);
+
+  /* creation of DS18B20Mutex */
+  DS18B20MutexHandle = osMutexNew(&DS18B20Mutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -212,20 +217,17 @@ int main(void)
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
-  /* creation of LEDTask */
-  LEDTaskHandle = osThreadNew(StartLEDTask, NULL, &LEDTask_attributes);
-
   /* creation of ReleCH1Task */
   ReleCH1TaskHandle = osThreadNew(StartReleCH1Task, NULL, &ReleCH1Task_attributes);
-
-  /* creation of TEMPTask */
-  TEMPTaskHandle = osThreadNew(StartTEMPTask, NULL, &TEMPTask_attributes);
 
   /* creation of ReleCH2Task */
   ReleCH2TaskHandle = osThreadNew(StartReleCH2Task, NULL, &ReleCH2Task_attributes);
 
   /* creation of ReleCH3Task */
   ReleCH3TaskHandle = osThreadNew(StartReleCH3Task, NULL, &ReleCH3Task_attributes);
+
+  /* creation of ReleCH4Task */
+  ReleCH4TaskHandle = osThreadNew(StartTeleCH4Task, NULL, &ReleCH4Task_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -286,7 +288,7 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
@@ -319,7 +321,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.ScanConvMode = ENABLE;
-  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
@@ -334,7 +336,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_7;
+  sConfig.Channel = ADC_CHANNEL_6;
   sConfig.Rank = 1;
   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
@@ -344,7 +346,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Channel = ADC_CHANNEL_7;
   sConfig.Rank = 2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -409,9 +411,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 3999;
+  htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 3999;
+  htim2.Init.Period = 16000-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -471,6 +473,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, Blue_Led_Pin|Rele_CH2_Pin|Rele_CH3_Vent_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Rele_CH4_GPIO_Port, Rele_CH4_Pin, GPIO_PIN_SET);
+
   /*Configure GPIO pins : Blue_Led_Pin Rele_CH2_Pin Rele_CH3_Vent_Pin */
   GPIO_InitStruct.Pin = Blue_Led_Pin|Rele_CH2_Pin|Rele_CH3_Vent_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
@@ -484,9 +489,31 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(User_KEY_EXTI0_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : DS18B20_Pin_Pin DHT11_Sensor_Pin */
+  GPIO_InitStruct.Pin = DS18B20_Pin_Pin|DHT11_Sensor_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Key_LED_Pin */
+  GPIO_InitStruct.Pin = Key_LED_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(Key_LED_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Rele_CH4_Pin */
+  GPIO_InitStruct.Pin = Rele_CH4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(Rele_CH4_GPIO_Port, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
@@ -514,30 +541,6 @@ void StartDefaultTask(void *argument)
   /* USER CODE END 5 */
 }
 
-/* USER CODE BEGIN Header_StartLEDTask */
-/**
-* @brief Function implementing the LEDTask thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartLEDTask */
-void StartLEDTask(void *argument)
-{
-  /* USER CODE BEGIN StartLEDTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    
-    if (BLUELED)
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); // LED ON
-    else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); // LED OFF
-    
-    osDelay(1);
-  }
-  /* USER CODE END StartLEDTask */
-}
-
 /* USER CODE BEGIN Header_StartReleCH1Task */
 /**
 * @brief Function implementing the ReleCH1Task thread.
@@ -551,44 +554,14 @@ void StartReleCH1Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    float voltage;
-    LDRSENSOR = HAL_ADC_GetValue(&hadc1);
-    voltage = (LDRSENSOR*3.3)/4095;
-    /*
-    voltage1 = (ADC1IN7 * 3.3) / 4095;
-    DiffA = ADC1IN1 - ADC1IN7;
-    sensorA = (sensorA + ADC1IN7)/2; */
-    //if (LED_Test = false)
-    //{
-      if (LDRSENSOR > 3000)
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH1 ON
+      if (BLUELED)
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); // Rele CH1 ON
       else
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH1 OFF
-    //}
-    
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET); // Rele CH1 OFF
+       
     osDelay(1);
   }
   /* USER CODE END StartReleCH1Task */
-}
-
-/* USER CODE BEGIN Header_StartTEMPTask */
-/**
-* @brief Function implementing the TEMPTask thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTEMPTask */
-void StartTEMPTask(void *argument)
-{
-  /* USER CODE BEGIN StartTEMPTask */
-  
-  /* Infinite loop */
-  for(;;)
-  {
-    
-    osDelay(1);
-  }
-  /* USER CODE END StartTEMPTask */
 }
 
 /* USER CODE BEGIN Header_StartReleCH2Task */
@@ -600,16 +573,16 @@ void StartTEMPTask(void *argument)
 /* USER CODE END Header_StartReleCH2Task */
 void StartReleCH2Task(void *argument)
 {
-  /* USER CODE BEGIN StartReleCH2Task 
-     A
-  */
+  /* USER CODE BEGIN StartReleCH2Task */
   /* Infinite loop */
   for(;;)
   {
-    voltage2 = (ADC1IN1 * 3.3) / 4095;
-    DiffA = ADC1IN1 - ADC1IN7;
-    sensorA = (sensorA + ADC1IN1)/2;
+    if (ADC1IN7 > 3000)
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH1 ON
+    else
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH1 OFF
 
+    LDRSENSOR = ADC1IN7;
     osDelay(1);
   }
   /* USER CODE END StartReleCH2Task */
@@ -628,15 +601,61 @@ void StartReleCH3Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    temperature = BLUELED;
+    temperature = 10;
     //temperature = temp_sensor.read_temp_celsius();
-    if (temperature)
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET); // Rele CH2 ON
+    if (temperature > 25)
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_RESET); // Rele CH3 ON - Ventilador
     else
-      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_SET); // Rele CH2 OFF
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, GPIO_PIN_SET); // Rele CH3 OFF - Ventilador
     osDelay(1);
   }
   /* USER CODE END StartReleCH3Task */
+}
+
+/* USER CODE BEGIN Header_StartTeleCH4Task */
+/**
+* @brief Function implementing the ReleCH4Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTeleCH4Task */
+void StartTeleCH4Task(void *argument)
+{
+  /* USER CODE BEGIN StartTeleCH4Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    if (ADC1IN6 < 1600)
+    
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); // Rele CH4 ON
+    else
+      HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); // Rele CH4 OFF
+
+    LDRSENSOR2 = ADC1IN6;
+    osDelay(1);
+  }
+  /* USER CODE END StartTeleCH4Task */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM10 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM10) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
 }
 
 /**
